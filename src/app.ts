@@ -77,7 +77,8 @@ const corsOptions = {
       process.env.CORS_ORIGIN || 'http://localhost:3000', // Environment-specific origin
       'http://localhost:3000', // Create React App default
       'http://localhost:3001', // Alternative React port
-      'http://localhost:5173'  // Vite default development port
+      'http://localhost:5173',  // Vite default development port
+      'https://notely-frontend-lemon.vercel.app'
     ];
     
     // Check if the request origin is in the allowed list
