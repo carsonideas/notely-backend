@@ -20,6 +20,7 @@
     "noImplicitThis": true,
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
+    
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {

@@ -10,6 +10,8 @@ import userRoutes from './routes/user.routes';
 
 dotenv.config();
 
+
+
 const app = express();
 
 app.use(express.json({ limit: '10mb' })); // Parse JSON payloads up to 10MB
