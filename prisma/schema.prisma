@@ -39,6 +39,8 @@ model Entry {
   authorId String
   author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
+  position  Int?
+
   @@map("entries")
 }
 

@@ -17,15 +17,17 @@ const corsOptions = {
     origin: function (origin, callback) {
         if (!origin)
             return callback(null, true);
-        if (process.env.CORS_ORIGIN === '*') {
+        if (process.env.CORS_ORIGIN === ('*')) {
             return callback(null, true);
         }
         const allowedOrigins = [
-            process.env.CORS_ORIGIN || 'http://localhost:3000',
+            process.env.CORS_ORIGIN ||
+                'http://localhost:3000',
             'http://localhost:3000',
             'http://localhost:3001',
             'http://localhost:5173',
-            'https://notely-frontend-lemon.vercel.app'
+            'https://notely-frontend-lemon.vercel.app',
+            '*',
         ];
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
@@ -83,7 +85,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).json({ message });
 });
 app.use((req, res) => {
-    console.log(`404 - Route not found: ${req.method} ${req.path}`);
+    console.log(`404 Route not found: ${req.method} ${req.path}`);
     res.status(404).json({ message: 'Route not found' });
 });
 exports.default = app;

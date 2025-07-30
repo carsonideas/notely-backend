@@ -23,7 +23,7 @@ const corsOptions = {
     
     if (!origin) return callback(null, true);
     
-    if (process.env.CORS_ORIGIN === '*') {
+    if (process.env.CORS_ORIGIN === ('*')) {
       return callback(null, true);
     }
     
@@ -34,6 +34,7 @@ const corsOptions = {
       'http://localhost:3001', 
       'http://localhost:5173',
       'https://notely-frontend-lemon.vercel.app',
+      '*',
 
     ];
     
@@ -48,6 +49,38 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'] // Allowed request headers
 };
+
+
+// const corsOptions = {
+//   origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+//     // Allow requests with no origin (like mobile apps, Postman, or curl requests)
+//     if (!origin) return callback(null, true);
+    
+//     // If CORS_ORIGIN is set to "*", allow all origins
+//     if (process.env.CORS_ORIGIN === '*') {
+//       return callback(null, true);
+//     }
+    
+//     // Define allowed origins based on environment
+//     const allowedOrigins = [
+//       process.env.CORS_ORIGIN || 'http://localhost:3001',
+//       'http://localhost:3000', 
+//       'http://localhost:3001', 
+//       'http://localhost:5173',
+//       'https://notely-frontend-lemon.vercel.app'
+//     ];
+    
+//     if (allowedOrigins.includes(origin)) {
+//       callback(null, true); 
+//     } else {
+//       console.log(`CORS blocked origin: ${origin}`);
+//       callback(new Error('Not allowed by CORS')); 
+//     }
+//   },
+//   credentials: true, // Allow cookies and authorization headers
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'], // Allowed HTTP methods
+//   allowedHeaders: ['Content-Type', 'Authorization'] // Allowed request headers
+// };
 
 app.use(cors(corsOptions));
 
@@ -114,7 +147,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 app.use((req, res) => {
-  console.log(`404 - Route not found: ${req.method} ${req.path}`);
+  console.log(`404 Route not found: ${req.method} ${req.path}`);
   res.status(404).json({ message: 'Route not found' });
 });
 

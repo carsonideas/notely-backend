@@ -18,15 +18,15 @@ const register = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'First name and last name are required' });
     }
 
-    // Validate firstName and lastName format
-    const nameRegex = /^[a-zA-Z\s]+$/;
-    if (!nameRegex.test(firstName.trim()) || firstName.trim().length < 2) {
-      return res.status(400).json({ message: 'First name must be at least 2 characters and contain only letters and spaces' });
-    }
+    // // Validate firstName and lastName format
+    // const nameRegex = /^[a-zA-Z\s]+$/;
+    // if (!nameRegex.test(firstName.trim()) || firstName.trim().length < 2) {
+    //   return res.status(400).json({ message: 'First name must be at least 2 characters and contain only letters and spaces' });
+    // }
 
-    if (!nameRegex.test(lastName.trim()) || lastName.trim().length < 2) {
-      return res.status(400).json({ message: 'Last name must be at least 2 characters and contain only letters and spaces' });
-    }
+    // if (!nameRegex.test(lastName.trim()) || lastName.trim().length < 2) {
+    //   return res.status(400).json({ message: 'Last name must be at least 2 characters and contain only letters and spaces' });
+    // }
 
     // Check if user already exists
     const existingUser = await prisma.user.findFirst({
