@@ -18,10 +18,19 @@ app.use('/api/notes', noteRoutes);
 app.use('/api/entries', noteRoutes); // Support both /notes and /entries endpoints
 app.use('/api/user', userRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+
 // Health Check
 app.get('/health', (_req, res) => {
   res.send('OK');
 });
+
+
+// app.listen(5000, () => console.log("Server running..."));
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(` Server running on port ${PORT}`));

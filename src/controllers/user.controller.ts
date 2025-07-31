@@ -44,13 +44,13 @@ const updateProfile = async (req: AuthenticatedRequest, res: Response) => {
     const userId = req.user!.id;
 
     // Validate firstName and lastName if provided
-    const nameRegex = /^[a-zA-Z\s]+$/;
+    // const nameRege÷x = /^[a-zA-Z\s]+$/;
     
     if (firstName !== undefined) {
       if (!firstName.trim() || firstName.trim().length < 2) {
         return res.status(400).json({ message: 'First name must be at least 2 characters long' });
       }
-      if (!nameRegex.test(firstName.trim())) {
+      if (firstName.trim()) {
         return res.status(400).json({ message: 'First name can only contain letters and spaces' });
       }
     }
@@ -59,7 +59,7 @@ const updateProfile = async (req: AuthenticatedRequest, res: Response) => {
       if (!lastName.trim() || lastName.trim().length < 2) {
         return res.status(400).json({ message: 'Last name must be at least 2 characters long' });
       }
-      if (!nameRegex.test(lastName.trim())) {
+      if (lastName.trim()) {
         return res.status(400).json({ message: 'Last name can only contain letters and spaces' });
       }
     }

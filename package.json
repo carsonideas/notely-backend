@@ -32,6 +32,7 @@
     "multer": "^2.0.2"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250730.0",
     "@types/node": "^24.1.0",
     "nodemon": "^3.1.10",
     "prisma": "^6.12.0",
